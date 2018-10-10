@@ -1,0 +1,19 @@
+# 요즘은 서버도 SSD 씁니다. 삼성 일렉트로닉스 가고싶으면 File System 잘 공부해 두십시오 ㅋ
+
+# A file system is the methods and data structures that an OS uses to keep track of files on a disk or partition.
+
+# disk structure에서 inode Table 중요함.
+ 파일 1개당 inode table에서 inode 하나를 가진다. 
+ 
+#22 파일을 저장하는데에 14개가 필요하다면?
+ Indirect block : 
+ Double indirect block : contains a list of the indirect block.
+ Triple indirect block : Double이 다차면 생성됨. 
+ 
+# how to modify last modified date in linux in C
+# book : Understanding Unix/Linux Programming
+# scp command : scp /home/swedu/Downloads/hw1_2016118246.c s2016118246@155.230.88.6:/home/s2016118246
+# ssh command : ssh s2016118246@155.230.88.6
+# hw#2 hint : use rename system call, link system call
+
+

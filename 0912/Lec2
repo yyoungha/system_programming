@@ -1,0 +1,56 @@
+- 기본 설정
+수업시간 전에 home directory에 자기 학번으로 된 workspace 만들기.
+lms에 올라와있는 vimrc 파일(vim 에디터 설정 파일)을 가져와 home directory에 .vimrc라는 파일로 저장하기.
+
+- Lecture 2
+System call
+ OS의 주요 기능 : managing system resources
+ System call is OS API : user level에서 system call interface를 통해서만 OS가 제공하는 하드웨어에 접근할 수 있다.
+
+Unix/Linux system programming 학습 3단계
+ 1. 실제 프로그램 : 무엇을 하는지
+ 2. system call : 어떻게 동작하는지
+ 3. 자신만의 버전 만들기 
+
+Shell
+ Shell is command line interpreter.
+ If you type an command on your terminal, 실제로는 쉘에게 실행해야할 프로그램 이름을 알려주고 그것을 실행하게 만든다. (/usr/bin 에 위치)
+ 
+utmp file (from who command)
+ allow one to discover information about who is currently using the system.
+ 
+who 명령어를 입력하면...
+ 1. open utmp file (system call: open)
+ 2. read record (system call: read)
+ 3. dispaly record
+ 4. close utmp file (system call: close)
+ 
+나만의 who 만들기: System call을 이용해보자
+ 1. open
+ 2. read 
+ 3. close (file을 close하지 않으면 memory와 같은 resource가 낭비된다.)
+
+나만의 cp 만들기: System call을 이용해 creat, write 해보기
+ creat(char* filename, mode_t mode) 
+ write(int fd, void *buf, size_t amt)
+ file descripter : handler of a file
+
+많은 System call은 NO기
+ 데이터 전송 뿐만 아니라 USER MODE와 KERNEL MODE 사이에 스위칭 하는 시간이 많이든다.
+ 즉, System call을 최소화 하는 것이 좋다.
+ 우리의 who2 프로그램에서는 while문 안에 System call(read)을 넣어 비효율적이다.
+ 따라서 한번의 System call에서 데이터를 읽어와서 buffer에 저장한 후, buffer에서 한 record씩 읽어온다.
+
+Kernel에서의 버퍼
+ Buffering 하니까 System call 횟수도 줄고 따라서 속도가 빨라져서 좋다.
+ Kernel에서도 디스크 공간의 일부를 Buffering 한다. 기
+
+
+UTMP 파일에 사용자 로그 출력하기
+ 파일을 읽으면 포인터가 하나씩 증가한다. record를 찾았다면 찾아낸 다음 record 앞에 파일 포인터가 위치하게 된다. 
+ 여기서 그대로 수정한다면 수정하려는 record 다음에 있는 항목이 수정될 것이다. 따라서 lseek () system call으로 파일 포인터를 옮겨준다.
+ lseek(int fd, off_t dist, int base)
+
+System call 사용 방법 익히
+
+

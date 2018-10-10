@@ -1,0 +1,42 @@
+ Midterm announcement
+- Date/Time : October 17, 09:00 ~ 11:00
+- Room : IT5(융복합관)-309
+- Allowed utilities: Pen, Eraser
+- Not allowed: Books, any sheets of own paper, notebooks
+- We do not tolerate cheating
+- The content of all lectures till October 10th is relevant
+- Good luck!!
+
+ Ch4. File system review
+- inode
+
+ Files and devices(Similarity)
+- Every device is treated as a file.
+- 파일을 사용하기 위해 사용했던 system call을 device 조작에도 사용이 가능하다.
+  (open, read, write, lseek, close, stat 등)
+- 하지만, Some device 는 몇가지 file operations를 지원하지 않는다.
+
+s2016118246@compasslab1:~$ ls -il /dev/sda
+341 brw-rw---- 1 root disk 8, 0  9月 28 06:16 /dev/sda
+
+- permissin 맨 앞의 b는 block device를 나타낸다.
+- device file의 inode는 file size, 
+- device를 file처럼 다룬다면 file이 inode를 이용하여 data block을 찾는 것처럼, 
+device는 inode를 이용하여 device를 control하는 function(subroutine)이 어디에 저장되어있는지에 대한 정보를 가지고 온다. 이 커널 내부의 이 subroutine을 device driver라 부른다.
+- Major number : which device driver handles the device
+- Minor number : device의 특정 instance를 가리킨다.
+
+- inode of disk-file and device-file
+inode for a disk-file	: contains a list of pointers to blocks in the data region.
+inode for a device-file	: contains a pointer to a device driver in kernel.
+
+ files and devices(Difference)
+- file과는 달리 terminal에서는 연결 시 버퍼를 사용하지 않는다.
+- fd = 0이 기본적으로 키보드 입력에 대한 파일 디스크립터를 가지기 때문에, open을 호출할 필요가 없다.
+
+?
+# what is block device?
+# Device driver, Major number, Minor number
+# Difference between ctrl c and ctrl d
+https://superuser.com/questions/169051/whats-the-difference-between-c-and-d-for-unix-mac-os-x-terminal
+
