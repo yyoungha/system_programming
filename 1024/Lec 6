@@ -1,0 +1,20 @@
+# Why refresh()?
+
+출력장치로 데이터를 전송하는 것은 매우 느리다.
+이를 주기적으로 반복할경우 시스템이 느려진다.
+따라서 버퍼에 저장해 두었다가 refresh() 함수를 호출하여 데이터를 전송한다.
+ 
+# Timer
+Real timer		: 실제 시간
+Virtual timer	: user mode 실행 시간
+Profile timer	: user + kernel mode 실행 시간 
+
+# Term-Project Announcement
+Goal	: developint any types of Linux application
+The deadline for your Term Projec submission will be 4th December.
+We will have the presentations of the term project.
+Team members : 4
+Build your team 
+- Let me know the team name and members.
+- Let me know what your topic
+- use GitHub
