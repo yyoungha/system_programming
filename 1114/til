@@ -1,0 +1,12 @@
+# I/O Redirection
+ : 리다이렉션(redirection)은 컴퓨팅에서 표준 스트림을 사용자 지정 위치로 우회할 수 있는 명령이다. 
+ 
+  (2) Pipe
+ 
+ $ command1 | command2
+ : command1의 실행결과를 command2의 입력으로 사용한다. 
+
+ $ command1 > tempfile; command2 < tempfile; rm tempfie 
+ : command1 | command2 와 동일한 동작을 한다.
+
+
