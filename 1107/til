@@ -1,2 +1,58 @@
 # How does the parent process know exit status of the child process.
+ $ ./a.out & 
+ : & means 'in the background'
+
+# In psh2 program, Ctrl-C signal (SIGINT:inturrupt signal) kills our shell program.
+ Q. How to deal with it?
+ A. signal(int signum, void (*action)(int)) 함수를 사용한 처리. (Ch6.4 와 man 7 signal 참조)
+
+# I/O Redirection
+ : 리다이렉션(redirection)은 컴퓨팅에서 표준 스트림을 사용자 지정 위치로 우회할 수 있는 명령이다. 
  
+  (1) Redirection of standard I/O
+
+ $ command1 > filename1
+ : command1의 stdout을 filename1로 변경한다.
+ : 기존에 filename1이 존재할 경우 overwrite하며, 그러지 않고 끝에 추가하려면 > 대신 >> 를 사용한다.
+
+ $ command1 < filename1 
+ : command1의 입력을 filename1으로부터 받는다. (instead of stdin)
+
+ $ command1 < inputfile > outputfile 
+ : command1의 입력(stdin)을 inputfile 로부터 받아 outputfile 로 내보낸다.
+
+  (2) Pipe
+ 
+ $ command1 | command2
+ : command1의 실행결과를 command2의 입력으로 사용한다. 
+
+ $ command1 > tempfile; command2 < tempfile; rm tempfie 
+ : command1 | command2 와 동일한 동작을 한다.
+
+  (3) Redirection of standard error
+
+ $ command1 2> filename2
+ : command1의 stderr를 filename2로 변경한다.
+
+# File descriptor 
+ : File descriptor(파일 서술자)는 특정한 파일에 접근하기 위한 추상적인 키이다. (index of an array)
+ : 각 프로세스는 각자의 File descripter table을 가진다.
+ : 0(stdin), 1(stdout), 2(stderr) 를 기본적으로 가지며 File descripter를 생성할 시 추가된다.
+
+# How to attach stdin to a file
+  (1) close(0) then call open()
+  (2) open, close(0), dup, close(fd)
+  (3) open, dup2, close(fd)
+
+# int execvp(const char *file, char *const argv[]) : parameter가 배열 형태로 전달된다.
+  int execlp(const char *file, const char *arg, ...: parameter를는 하나씩 전달해준다.
+ : 동작은 두 함수가 동일하나 인자 전달 방식에만 차이가 있다.
+
+#  (중요) child process에서 redirecting 한 내용은 parent process에서 따로 바뀌지 않는다.
+
+
+
+
+
+
+

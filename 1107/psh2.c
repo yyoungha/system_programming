@@ -1,3 +1,10 @@
+/*	prompting shell version 2
+ *		Solves the 'one-shot' problem of version 1
+ *			Uses execvp(), but fork()s first so that 
+ *			the shell waits around to perform another command.
+ *		New Problem: shell catches signals. Run vi, press ^c.
+ */
+
 #include	<stdio.h>
 #include	<signal.h>
 #include	<string.h>

@@ -10,7 +10,7 @@
 #include	<stdlib.h>
 
 #define MAXARGS	20
-#define	ARGLEN	100
+#define ARGLEN 100
 
 char* makestring(char*);			// cmdline args
 int execute(char* []);				// token length
