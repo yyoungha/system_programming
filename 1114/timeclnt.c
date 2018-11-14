@@ -24,7 +24,7 @@ int main(int ac, char *av[])
 		oops("socket");
 
 	// Step 2. connect to server
-	bzero( (void *)&saddr, sizeof(saddr) );
+	bzero( &saddr, sizeof(saddr) );
 
 	hp = gethostbyname( av[1] );
 	if ( hp == NULL )
