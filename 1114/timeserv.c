@@ -10,7 +10,7 @@
 #include <time.h> 
 #include <string.h>
 
-#define		PORTNUM	23000
+#define		PORTNUM	13000
 #define		HOSTLEN	256
 #define		oops(msg)	{ perror(msg); exit(1); }
 

@@ -1,0 +1,13 @@
+Final exam : Dec. 12
+Project Deadline : Dec. 18 (19일 발표)
+
+\r\n(CRLF) is the last character of the HTTP request.
+줄바꿈 방식은 ₩n 말고도 ₩r, ₩r₩n이 있던데 차이점이 뭔가요?
+
+₩r은 캐리지 리턴(Carriage Return, CR), ₩n은 라인 피드(Line Feed, LF)이라고 부릅니다. 사실 이 둘은 타자기에서 나온 용어입니다. 타자기에서 줄바꿈을 하려면 종이를 오른쪽으로 쭉 밀고, 다시 종이를 한 줄만큼 위로 올립니다. 이렇게 종이를 오른쪽으로 밀어서 처음으로 오게 하는 행동을 복귀(Carriage Return)라고 하고, 종이를 위로 올리는 행동을 개행(Line Feed)이라고 합니다. 이제 타자기는 사라지고 컴퓨터와 키보드로 대체되었지만 타자기의 흔적이 완전히 사라지지 않고 남은 것이 CR(₩r)과 LF(₩n)입니다. 컴퓨터에서 CR, LF는 둘 다 새 줄, 줄바꿈으로 사용되고 있으며 운영체제 별로 조금씩 차이가 있습니다. 
+[Source : https://dojang.io/mod/page/view.php?id=860]
+
+Divide state into 3 pieces. (Address space, Thread state, OS resources)
+
+서로 다른 Process는 서로 다른 Address space를 가진다. 같은 Address 0 을 참조하더라도 다른 값.
+하지만 Thread는 공유 Address space를 가진다. 
