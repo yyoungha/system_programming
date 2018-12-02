@@ -1,3 +1,5 @@
+/* timeserv.c - a socket-based time of day server
+   */
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -14,20 +16,20 @@
 
 int main(int ac, char *av[])
 {
-	struct	sockaddr_in	saddr;
-	struct	hostent		*hp;
+	struct	sockaddr_in	saddr;	// build our address here
+	struct	hostent		*hp;	// this is part of our address
 	char	hostname[HOSTLEN];
-	int		sock_id, sock_fd;
-	FILE	*sock_fp;
-	char	*ctime();
-	time_t	thetime;
+	int		sock_id, sock_fd;	// line id, file descriptor
+	FILE	*sock_fp;			// use socket as stream
+	char	*ctime();			// convert secs to string
+	time_t	thetime;			// the time we report
 
-	// Step 1. 
+	// Step 1. ask kernel for a socket
 	sock_id = socket( PF_INET, SOCK_STREAM, 0 );
 	if ( sock_id == -1 )
 		oops("socket");
 
-	// Step 2.
+	// Step 2. erase the data bzero(startpoint, numofbytes) and bind address to socket.
 	bzero( (void *)&saddr, sizeof(saddr) );
 
 	gethostname( hostname, HOSTLEN );
@@ -37,7 +39,7 @@ int main(int ac, char *av[])
 	saddr.sin_port = htons(PORTNUM);
 	saddr.sin_family = AF_INET;
 
-	// Step 3.
+	// Step 3. allow incoming calls with Qsize=1 on socket
 	if ( listen(sock_id, 1) != 0 )
 		oops("listen");
 
