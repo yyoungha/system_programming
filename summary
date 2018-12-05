@@ -1,0 +1,43 @@
+Summary - System Programming
+
+- User level Application cannot dirctly access hardware control.
+- The kernel provides services for accessing to system resources.
+- System program use those services directly to access the system resources.
+
+File I/O
+- File is important because so much of a Unix system is represented as files.
+- File must be opened before a file can be read from or written to.
+- Kernel maintains a per-process list of open files, called the file table.
+- The table is indexed via nonnegative integer known as file descriptors.
+- Buffering is used to minimize system calls.
+- System calls : write(), close(), lseek(), creat(), open(), read()
+- inode contains metadata. We used stat structure to handle this.
+
+Signal
+- Registering the signal-handling functions : sighandler_t signal()
+- Waiting for a signal : int pause()
+
+Time
+- Time serves various purposes in a modern OS, and many programs need to keep track of it.
+- Sleep / Alarm function : sleep(), usleep(), alarm()
+- 3 kinds of timer : Real, Virtual, Profile
+
+Process Management
+- A process is a running program.
+- Creating new process : fork()
+- Running a program on a process : exec()
+- Terminating a process : exit()
+- Waiting for terminated child process : wait()
+
+Interprocess Communication
+1. I/O Redirection 
+ Method1 : close() -> open()
+ Method2 : open() -> close() -> dup() -> close()
+2. Pipe : Data communication channel in the kernel.
+3. Socket 
+
+Thread
+- Blocking Thread : pthread_cond_wait()
+- Unblocking thread : pthread_cond_signal()
+
+
